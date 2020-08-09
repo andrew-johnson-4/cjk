@@ -61,6 +61,7 @@ pub struct KanjiRecord {
    pub old: Option<char>,
    pub radical: Option<char>,
    pub strokes: u64,
+   pub grade: String,
    pub year: Option<u64>,
    pub translation: String,
    pub pronunciation: Vec<String>,
@@ -68,12 +69,24 @@ pub struct KanjiRecord {
 
 lazy_static! {
    pub static ref KANJI: Vec<KanjiRecord> = {
+      let mut ks = Vec::new();
       for line in include_str!("../data/kanji.txt").split('\n') {
          if line.len()==0 { continue; }
          if &line[0..1]=="#" { continue; }
-         println!("{}", line);
+         let vs = line.split('\t').collect::<Vec<&str>>();
+         ks.push(KanjiRecord {
+            number: vs[0].parse::<u64>().expect("number"),
+            new: vs[1].chars().next().unwrap(),
+            old: vs[2].chars().next(),
+            radical: vs[3].chars().next(),
+            strokes: vs[4].parse::<u64>().expect("strokes"),
+            grade: vs[5].to_string(),
+            year: vs[6].parse::<u64>().ok(),
+            translation: vs[7].to_string(),
+            pronunciation: vs[8].split('、').map(|s| s.to_string()).collect::<Vec<String>>()
+         });
       }
-      vec![]
+      ks
    };
 }
 
