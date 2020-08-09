@@ -1,6 +1,6 @@
 [package]
 name = "cjk"
-version = "0.0.2"
+version = "0.0.3"
 authors = ["Andrew <andrew@subarctic.org>"]
 license = "MIT OR Apache-2.0"
 description = "Answer Boolean Questions and Queries about CJK and related character sets"
