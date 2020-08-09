@@ -1,0 +1,11 @@
+[package]
+name = "cjk"
+version = "0.0.1"
+authors = ["Andrew <andrew@subarctic.org>"]
+license = "MIT OR Apache-2.0"
+description = "Answer Boolean Questions and Queries about CJK and related character sets"
+edition = "2018"
+readme = "README.md"
+repository = "https://github.com/andrew-johnson-4/cjk"
+documentation = "https://docs.rs/cjk/"
+keywords = ["cjk","unicode","charset","property","query"]
