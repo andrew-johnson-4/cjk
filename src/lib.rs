@@ -55,7 +55,7 @@ lazy_static! {
    };
 }
 
-pub struct KanjiRecord {
+pub struct JouyouRecord {
    pub number: u64,
    pub new: char,
    pub old: Option<char>,
@@ -68,13 +68,13 @@ pub struct KanjiRecord {
 }
 
 lazy_static! {
-   pub static ref KANJI: Vec<KanjiRecord> = {
+   pub static ref JOUYOU_TABLE: Vec<JouyouRecord> = {
       let mut ks = Vec::new();
-      for line in include_str!("../data/kanji.txt").split('\n') {
+      for line in include_str!("../data/jouyou.txt").split('\n') {
          if line.len()==0 { continue; }
          if &line[0..1]=="#" { continue; }
          let vs = line.split('\t').collect::<Vec<&str>>();
-         ks.push(KanjiRecord {
+         ks.push(JouyouRecord {
             number: vs[0].parse::<u64>().expect("number"),
             new: vs[1].chars().next().unwrap(),
             old: vs[2].chars().next(),
