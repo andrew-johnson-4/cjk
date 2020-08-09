@@ -9,3 +9,6 @@ readme = "README.md"
 repository = "https://github.com/andrew-johnson-4/cjk"
 documentation = "https://docs.rs/cjk/"
 keywords = ["cjk","unicode","charset","property","query"]
+
+[dependencies]
+lazy_static = "1.4"

@@ -1,4 +1,5 @@
 use std::collections::{HashMap};
+use lazy_static::lazy_static;
 
 static HIRAGANA_TO_ROMAJI: [(char,&str); 72] = [
    ('あ',"a"),  ('い',"i"),   ('う',"u"),   ('え',"e"),  ('お',"o"),
@@ -17,20 +18,20 @@ static HIRAGANA_TO_ROMAJI: [(char,&str); 72] = [
    ('ら',"ra"),	('り',"ri"),  ('る',"ru"),  ('れ',"re"), ('ろ',"ro"),
    ('わ',"wa"),	('ゐ',"wi"),                ('ゑ',"we"), ('を',"wo"),
 ];
-
-pub fn kana_to_romaji() -> HashMap<char,String> {
-   let mut ktr = HashMap::new();
-   for (c,r) in HIRAGANA_TO_ROMAJI.iter() {
-      ktr.insert(*c,r.to_string());
-   }
-   ktr
+lazy_static! {
+   pub static ref H2R: HashMap<char,String> = {
+      let mut ktr = HashMap::new();
+      for (c,r) in HIRAGANA_TO_ROMAJI.iter() {
+         ktr.insert(*c,r.to_string());
+      }
+      ktr
+   };
 }
 
 pub fn romaji(s: &str) -> String {
    let mut o = String::new();
-   let ktr = kana_to_romaji();
    for c in s.chars() {
-      if let Some(r) = ktr.get(&c) {
+      if let Some(r) = H2R.get(&c) {
          o.push_str(&r);
       } else {
          o.push(c);
