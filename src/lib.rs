@@ -55,6 +55,28 @@ lazy_static! {
    };
 }
 
+pub struct KanjiRecord {
+   pub number: u64,
+   pub new: char,
+   pub old: Option<char>,
+   pub radical: Option<char>,
+   pub strokes: u64,
+   pub year: Option<u64>,
+   pub translation: String,
+   pub pronunciation: Vec<String>,
+}
+
+lazy_static! {
+   pub static ref KANJI: Vec<KanjiRecord> = {
+      for line in include_str!("../data/kanji.txt").split('\n') {
+         if line.len()==0 { continue; }
+         if &line[0..1]=="#" { continue; }
+         println!("{}", line);
+      }
+      vec![]
+   };
+}
+
 pub fn romaji(s: &str) -> String {
    let mut o = String::new();
    for c in s.chars() {
