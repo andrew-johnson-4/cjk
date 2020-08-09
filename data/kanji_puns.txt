@@ -50,455 +50,230 @@
 50	姻		女	9	S		matrimony	イン
 in
 51	員		口	10	3		member	イン
-in
 52	院		阜	10	3		institution	イン
-in
 53	淫 [7]		水	11	S	2010	lewdness	イン、みだ-ら
-in, mida-ra
 54	陰		阜	11	S		shade	イン、かげ、かげ-る
-in, kage, kage-ru
 55	飲		食	12	3		drink	イン、の-む
-in, no-mu
 56	隠	隱	阜	14	S		conceal	イン、かく-す、かく-れる
-in, kaku-su, kaku-reru
 57	韻		音	19	S		rhyme	イン
-in
 58	右		口	5	1		right (direction)	ウ、ユウ、みぎ
-u, yū, migi
 59	宇		宀	6	6		eaves	ウ
-u
 60	羽		羽	6	2		feather	ウ、は、はね
-u, ha, hane
 61	雨		雨	8	1		rain	ウ、あめ、（あま）
-u, ame, (ama)
 62	唄		口	10	S	2010	song	（うた）
-(uta)
 63	鬱		鬯	29	S	2010	gloom	ウツ
-utsu
 64	畝		田	10	S		furrow	うね
-une
 65	浦		水	10	S		bay	うら
-ura
 66	運		辵	12	3		carry	ウン、はこ-ぶ
-un, hako-bu
 67	雲		雨	12	2		cloud	ウン、くも
-un, kumo
 68	永		水	5	5		eternity	エイ、なが-い
-ei, naga-i
 69	泳		水	8	3		swim	エイ、およ-ぐ
-ei, oyo-gu
 70	英		艸	8	4		England	エイ
-ei
 71	映		日	9	6		reflect	エイ、うつ-る、うつ-す、は-える
-ei, utsu-ru, utsu-su, ha-eru
 72	栄	榮	木	9	4		prosperity	エイ、さか-える、は-え、は-える
-ei, saka-eru, ha-e, ha-eru
 73	営	營	火	12	5		manage	エイ、いとな-む
-ei, itona-mu
 74	詠		言	12	S		recitation	エイ、よ-む
-ei, yo-mu
 75	影		彡	15	S		shadow	エイ、かげ
-ei, kage
 76	鋭		金	15	S		pointed	エイ、するど-い
-ei, surudo-i
 77	衛	衞	行	16	5		defense	エイ
-ei
 78	易		日	8	5		easy	エキ、イ、やさ-しい
-eki, i, yasa-shii
 79	疫		疒	9	S		epidemic	エキ、（ヤク）
-eki, (yaku)
 80	益		皿	10	5		benefit	エキ、（ヤク）
-eki, (yaku)
 81	液		水	11	5		fluid	エキ
-eki
 82	駅	驛	馬	14	3		station	エキ
-eki
 83	悦		心	10	S		ecstasy	エツ
-etsu
 84	越		走	12	S		cross over	エツ、こ-す、こ-える
-etsu, ko-su, ko-eru
 85	謁	謁 [4]	言	15	S		audience	エツ
-etsu
 86	閲		門	15	S		review	エツ
-etsu
 87	円	圓	囗	4	1		round, yen	エン、まる-い
-en, maru-i
 88	延		廴	8	6		prolong	エン、の-びる、の-べる、の-ばす
-en, no-biru, no-beru, no-basu
 89	沿		水	8	6		run alongside	エン、そ-う
-en, so-u
 90	炎		火	8	S		inflammation	エン、ほのお
-en, honoo
 91	怨		心	9	S	2010	grudge	エン、オン
-en, on
 92	宴		宀	10	S		banquet	エン
-en
 93	媛		女	12	S	2010	princess	エン
-en
 94	援		手	12	S		aid	エン
-en
 95	園		囗	13	2		garden	エン、その
-en, sono
 96	煙		火	13	S		smoke	エン、けむ-る、けむり、けむ-い
-en, kemu-ru, kemuri, kemu-i
 97	猿		犬	13	S	1981	monkey	エン、さる
-en, saru
 98	遠		辵	13	2		far	エン、（オン）、とお-い
-en, (on), too-i
 99	鉛		金	13	S		lead	エン、なまり
-en, namari
 100	塩	鹽	鹵	13	4		salt	エン、しお
-en, shio
 101	演		水	14	5		perform	エン
-en
 102	縁	緣	糸	15	S		affinity	エン、ふち
-en, fuchi
 103	艶	艷	色	19	S	2010	glossy	エン、つや
-en, tsuya
 104	汚		水	6	S		dirty	オ、けが-す、けが-れる、けが-らわしい、よご-す、よご-れる、きたな-い
-o, kega-su, kega-reru, kega-rawashii, yogo-su, yogo-reru, kitana-i
 105	王		玉	4	1		king	オウ
-ō
 106	凹		凵	5	S	1981	concave	オウ
-ō
 107	央		大	5	3		center	オウ
-ō
 108	応	應	心	7	5		respond	オウ、こた-える
-ō, kota-eru
 109	往		彳	8	5		outward journey	オウ
-ō
 110	押		手	8	S		push	オウ、お-す、お-さえる
-ō, o-su, o-saeru
 111	旺		日	8	S	2010	flourishing	オウ
-ō
 112	欧	歐	欠	8	S		Europe	オウ
-ō
 113	殴	毆	殳	8	S		assault	オウ、なぐ-る
-ō, nagu-ru
 114	桜	櫻	木	10	5		cherry tree	オウ、さくら
-ō, sakura
 115	翁		羽	10	S		venerable old man	オウ
-ō
 116	奥	奧	大	12	S		heart	オウ、おく
-ō, oku
 117	横	橫	木	15	3		side	オウ、よこ
-ō, yoko
 118	岡		山	8	S	2010	hill	（おか）[6]
-(oka)
 119	屋		尸	9	3		roof	オク、や
-oku, ya
 120	億		人	15	4		hundred million	オク
-oku
 121	憶		心	16	S		recollection	オク
-oku
 122	臆		肉	17	S	2010	timidity	オク
-oku
 123	虞		虍	13	S		uneasiness	おそれ
-osore
 124	乙		乙	1	S		the latter	オツ
-otsu
 125	俺		人	10	S	2010	I, we	おれ
-ore
 126	卸		卩	9	S		wholesale	おろ-す、おろし
-oro-su, oroshi
 127	音		音	9	1		sound	オン、イン、おと、ね
-on, in, oto, ne
 128	恩		心	10	5		grace	オン
-on
 129	温	溫	水	12	3		warm	オン、あたた-か、あたた-かい、あたた-まる、あたた-める
-on, atata-ka, atata-kai, atata-maru, atata-meru
 130	穏	穩	禾	16	S		calm	オン、おだ-やか
-on, oda-yaka
 131	下		一	3	1		below	カ、ゲ、した、しも、もと、さ-げる、さ-がる、くだ-る、くだ-す、くだ-さる、お-ろす、お-りる
-ka, ge, shita, shimo, moto, sa-geru, sa-garu, kuda-ru, kuda-su, kuda-saru, o-rosu, o-riru
 132	化		匕	4	3		change	カ、ケ、ば-ける、ば-かす
-ka, ke, ba-keru, ba-kasu
 133	火		火	4	1		fire	カ、ひ、（ほ）
-ka, hi, (ho)
 134	加		力	5	4		add	カ、くわ-える、くわ-わる
-ka, kuwa-eru, kuwa-waru
 135	可		口	5	5		possible	カ
-ka
 136	仮	假	人	6	5		temporary	カ、（ケ）、かり
-ka, (ke), kari
 137	何		人	7	2		what	カ、なに、（なん）
-ka, nani, (nan)
 138	花		艸	7	1		flower	カ、はな
-ka, hana
 139	佳		人	8	S		excellent	カ
-ka
 140	価	價	人	8	5		value	カ、あたい
-ka, atai
 141	果		木	8	4		fruit	カ、は-たす、は-てる、は-て
-ka, ha-tasu, ha-teru, ha-te
 142	河		水	8	5		river	カ、かわ
-ka, kawa
 143	苛		艸	8	S	2010	torment	カ
-ka
 144	科		禾	9	2		section	カ
-ka
 145	架		木	9	S		rack	カ、か-ける、か-かる
-ka, ka-keru, ka-karu
 146	夏		夊	10	2		summer	カ、（ゲ）、なつ
-ka, (ge), natsu
 147	家		宀	10	2		house	カ、ケ、いえ、や
-ka, ke, ie, ya
 148	荷		艸	10	3		luggage	カ、に
-ka, ni
 149	華		艸	10	S		splendor	カ、（ケ）、はな
-ka, (ke), hana
 150	菓		艸	11	S		confectionery	カ
-ka
 151	貨		貝	11	4		freight	カ
-ka
 152	渦		水	12	S	1981	whirlpool	カ、うず
-ka, uzu
 153	過		辵	12	5		go beyond	カ、す-ぎる、す-ごす、あやま-つ、あやま-ち
-ka, su-giru, su-gosu, ayama-tsu, ayama-chi
 154	嫁		女	13	S		marry into	カ、よめ、とつ-ぐ
-ka, yome, totsu-gu
 155	暇		日	13	S		spare time	カ、ひま
-ka, hima
 156	禍	禍 [4]	示	13	S		calamity	カ
-ka
 157	靴		革	13	S	1981	shoes	カ、くつ
-ka, kutsu
 158	寡		宀	14	S		widow	カ
-ka
 159	歌		欠	14	2		song	カ、うた、うた-う
-ka, uta, uta-u
 160	箇		竹	14	S		counters for things	カ
-ka
 161	稼		禾	15	S	1981	earnings	カ、かせ-ぐ
-ka, kase-gu
 162	課		言	15	4		section	カ
-ka
 163	蚊		虫	10	S		mosquito	か
-ka
 164	牙 [5]		牙	4	S	2010	tusk	ガ、（ゲ）、きば
-ga, (ge), kiba
 165	瓦		瓦	5	S	2010	tile	ガ、かわら
-ga, kawara
 166	我		戈	7	6		ego	ガ、われ、わ
-ga, ware, wa
 167	画	畫	田	8	2		tableau	ガ、カク
-ga, kaku
 168	芽		艸	8	4		bud	ガ、め
-ga, me
 169	賀		貝	12	5		congratulations	ガ
-ga
 170	雅		隹	13	S		gracious	ガ
-ga
 171	餓		食	15	S		starve	ガ
-ga
 172	介		人	4	S		jammed in	カイ
-kai
 173	回		囗	6	2		times	カイ、（エ）、まわ-る、まわ-す
-kai, (e), mawa-ru, mawa-su
 174	灰		火	6	6		ashes	カイ、はい
-kai, hai
 175	会	會	曰	6	2		association	カイ、エ、あ-う
-kai, e, a-u
 176	快		心	7	5		cheerful	カイ、こころよ-い
-kai, kokoroyo-i
 177	戒		戈	7	S		commandment	カイ、いまし-める
-kai, imashi-meru
 178	改		攴	7	4		reformation	カイ、あらた-める、あらた-まる
-kai, arata-meru, arata-maru
 179	怪		心	8	S		suspicious	カイ、あや-しい、あや-しむ
-kai, aya-shii, aya-shimu
 180	拐		手	8	S	1981	kidnap	カイ
-kai
 181	悔	悔 [4]	心	9	S		repent	カイ、く-いる、く-やむ、くや-しい
-kai, ku-iru, ku-yamu, kuya-shii
 182	海	海 [4]	水	9	2		sea	カイ、うみ
-kai, umi
 183	界		田	9	3		world	カイ
-kai
 184	皆		白	9	S		all	カイ、みな
-kai, mina
 185	械		木	11	4		contraption	カイ
-kai
 186	絵	繪	糸	12	2		picture	カイ、エ
-kai, e
 187	開		門	12	3		open	カイ、ひら-く、ひら-ける、あ-く、あ-ける
-kai, hira-ku, hira-keru, a-ku, a-keru
 188	階		阜	12	3		floor of a building	カイ
-kai
 189	塊		土	13	S		clod	カイ、かたまり
-kai, katamari
 190	楷		木	13	S	2010	square character style	カイ
-kai
 191	解		角	13	5		untie	カイ、ゲ、と-く、と-かす、と-ける
-kai, ge, to-ku, to-kasu, to-keru
 192	潰		水	15	S	2010	crush	カイ、つぶ-す、つぶ-れる
-kai, tsubu-su, tsubu-reru
 193	壊	壞	土	16	S		demolition	カイ、こわ-す、こわ-れる
-kai, kowa-su, kowa-reru
 194	懐	懷	心	16	S		pocket	カイ、ふところ、なつ-かしい、なつ-かしむ、なつ-く、なつ-ける
-kai, futokoro, natsu-kashii, natsu-kashimu, natsu-ku, natsu-keru
 195	諧		言	16	S	2010	harmony	カイ
-kai
 196	貝		貝	7	1		shellfish	かい
-kai
 197	外		夕	5	2		outside	ガイ、ゲ、そと、ほか、はず-す、はず-れる
-gai, ge, soto, hoka, hazu-su, hazu-reru
 198	劾		力	8	S		censure	ガイ
-gai
 199	害		宀	10	4		harm	ガイ
-gai
 200	崖		山	11	S	2010	cliff	ガイ、がけ
-gai, gake
 201	涯		水	11	S	1981	horizon	ガイ
-gai
 202	街		行	12	4		street	ガイ、（カイ）、まち
-gai, (kai), machi
 203	慨	慨 [4]	心	13	S		rue	ガイ
-gai
 204	蓋		艸	13	S	2010	cover	ガイ、ふた
-gai, futa
 205	該		言	13	S		above-stated	ガイ
-gai
 206	概	槪	木	14	S		outline	ガイ
-gai
 207	骸		骨	16	S	2010	dead remains	ガイ
-gai
 208	垣		土	9	S	1981	hedge	かき
-kaki
 209	柿		木	9	S	2010	persimmon	かき
-kaki
 210	各		口	6	4		each	カク、おのおの
-kaku, onoono
 211	角		角	7	2		angle	カク、かど、つの
-kaku, kado, tsuno
 212	拡	擴	手	8	6		broaden	カク
-kaku
 213	革		革	9	6		leather	カク、かわ
-kaku, kawa
 214	格		木	10	5		status	カク、（コウ）
-kaku, (kō)
 215	核		木	10	S		nucleus	カク
-kaku
 216	殻	殼	殳	11	S	1981	husk	カク、から
-kaku, kara
 217	郭		邑	11	S		enclosure	カク
-kaku
 218	覚	覺	見	12	4		memorize	カク、おぼ-える、さ-ます、さ-める
-kaku, obo-eru, sa-masu, sa-meru
 219	較		車	13	S		contrast	カク
-kaku
 220	隔		阜	13	S		isolate	カク、へだ-てる、へだ-たる
-kaku, heda-teru, heda-taru
 221	閣		門	14	6		tall	カク
-kaku
 222	確		石	15	5		certain	カク、たし-か、たし-かめる
-kaku, tashi-ka, tashi-kameru
 223	獲		犬	16	S		seize	カク、え-る
-kaku, e-ru
 224	嚇		口	17	S		menacing	カク
-kaku
 225	穫		禾	18	S		harvest	カク
-kaku
 226	学	學	子	8	1		study	ガク、まな-ぶ
-gaku, mana-bu
 227	岳	嶽	山	8	S		point	ガク、たけ
-gaku, take
 228	楽	樂	木	13	2		pleasure	ガク、ラク、たの-しい、たの-しむ
-gaku, raku, tano-shii, tano-shimu
 229	額		頁	18	5		amount	ガク、ひたい
-gaku, hitai
 230	顎		頁	18	S	2010	jaw	ガク、あご
-gaku, ago
 231	掛		手	11	S		hang	か-ける、か-かる、かかり
-ka-keru, ka-karu, kakari
 232	潟		水	15	S	1981	lagoon	かた
-kata
 233	括		手	9	S		fasten	カツ
-katsu
 234	活		水	9	2		active	カツ
-katsu
 235	喝	喝 [4]	口	11	S	1981	hoarse	カツ
-katsu
 236	渇	渴	水	11	S		thirst	カツ、かわ-く
-katsu, kawa-ku
 237	割		刀	12	6		divide	カツ、わ-る、わり、わ-れる、さ-く
-katsu, wa-ru, wari, wa-reru, sa-ku
 238	葛 [7]		艸	12	S	2010	arrowroot	カツ、くず
-katsu, kuzu
 239	滑		水	13	S		slippery	カツ、コツ、すべ-る、なめ-らか
-katsu, kotsu, sube-ru, name-raka
 240	褐	褐 [4]	衣	13	S	1981	brown	カツ
-katsu
 241	轄		車	17	S		control	カツ
-katsu
 242	且		一	5	S		moreover	か-つ
-ka-tsu
 243	株		木	10	6		stocks	かぶ
-kabu
 244	釜		金	10	S	2010	kettle	かま
-kama
 245	鎌		金	18	S	2010	sickle	かま
-kama
 246	刈		刀	4	S		reap	か-る
-ka-ru
 247	干		干	3	6		dry	カン、ほ-す、ひ-る
-kan, ho-su, hi-ru
 248	刊		刀	5	5		publish	カン
-kan
 249	甘		甘	5	S		sweet	カン、あま-い、あま-える、あま-やかす
-kan, ama-i, ama-eru, ama-yakasu
 250	汗		水	6	S		sweat	カン、あせ
-kan, ase
 251	缶	罐	缶	6	S	1981	tin can	カン
-kan
 252	完		宀	7	4		perfect	カン
-kan
 253	肝		肉	7	S		liver	カン、きも
-kan, kimo
 254	官		宀	8	4		government official	カン
-kan
 255	冠		冖	9	S		crown	カン、かんむり
-kan, kanmuri
 256	巻	卷	卩	9	6		scroll	カン、ま-く、まき
-kan, ma-ku, maki
 257	看		目	9	6		watch over	カン
-kan
 258	陥	陷	阜	10	S		collapse	カン、おちい-る、おとしい-れる
-kan, ochii-ru, otoshii-reru
 259	乾		乙	11	S		dry	カン、かわ-く、かわ-かす
-kan, kawa-ku, kawa-kasu
 260	勘		力	11	S		intuition	カン
-kan
 261	患		心	11	S		afflicted	カン、わずら-う
-kan, wazura-u
 262	貫		貝	11	S		pierce	カン、つらぬ-く
-kan, tsuranu-ku
 263	寒		宀	12	3		cold	カン、さむ-い
-kan, samu-i
 264	喚		口	12	S		yell	カン
-kan
 265	堪		土	12	S		withstand	カン、た-える
-kan, ta-eru
 266	換		手	12	S		interchange	カン、か-える、か-わる
-kan, ka-eru, ka-waru
 267	敢		攴	12	S		daring	カン
-kan
 268	棺		木	12	S		coffin	カン
-kan
 269	款		欠	12	S		goodwill	カン
-kan
 270	間		門	12	2		interval	カン、ケン、あいだ、ま
-kan, ken, aida, ma
 271	閑		門	12	S		leisure	カン
-kan
 272	勧	勸	力	13	S		persuade	カン、すす-める
-kan, susu-meru
 273	寛	寬	宀	13	S		tolerant	カン
-kan
 274	幹		干	13	5		tree-trunk	カン、みき
-kan, miki
 275	感		心	13	3		feeling	カン
-kan
 276	漢	漢 [4]	水	13	3		China	カン
 kan
 277	慣		心	14	5		accustomed	カン、な-れる、な-らす
