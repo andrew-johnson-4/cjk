@@ -7,7 +7,7 @@ fn kanji1() {
 
 #[test]
 fn kanji2() {
-   assert_eq!(JOUYOU_PRONUNCIATION_INDEX.len(), 1114);
+   assert_eq!(JOUYOU_PRONUNCIATION_INDEX.len(), 1113);
 }
 
 #[test]

@@ -1,7 +1,7 @@
 use std::collections::{HashMap};
 use lazy_static::lazy_static;
 
-pub static HIRAGANA_TO_ROMAJI: [(char,&str); 73] = [
+pub static HIRAGANA_TO_ROMAJI: [(char,&str); 83] = [
    ('あ',"a"),  ('い',"i"),   ('う',"u"),   ('え',"e"),  ('お',"o"),
    ('か',"ka"), ('き',"ki"),  ('く',"ku"),  ('け',"ke"), ('こ',"ko"),
    ('が',"ga"),	('ぎ',"gi"),  ('ぐ',"gu"),  ('げ',"ge"), ('ご',"go"),
@@ -18,6 +18,12 @@ pub static HIRAGANA_TO_ROMAJI: [(char,&str); 73] = [
    ('ら',"ra"),	('り',"ri"),  ('る',"ru"),  ('れ',"re"), ('ろ',"ro"),
    ('わ',"wa"),	('ゐ',"wi"),                ('ゑ',"we"), ('を',"wo"),
    ('ん',"n"),
+   //romanization of these characters is context sensitive, especially for aeiou
+   //here we prefix with x for later consumption
+   ('ゔ',"v"),
+   ('っ',"xtsu"),
+   ('ゃ',"xya"),              ('ゅ',"xyu"),              ('ょ',"xyo"),
+   ('ぁ',"xa"), ('ぃ',"xi"),  ('ぅ',"xu"),  ('ぇ',"xe"), ('ぉ',"xo"),
 ];
 lazy_static! {
    pub static ref H2R: HashMap<char,String> = {
@@ -29,7 +35,7 @@ lazy_static! {
    };
 }
 
-pub static KATAKANA_TO_ROMAJI: [(char,&str); 73] = [
+pub static KATAKANA_TO_ROMAJI: [(char,&str); 85] = [
    ('ア',"a"),  ('イ',"i"),   ('ウ',"u"),   ('エ',"e"),	 ('オ',"o"),
    ('カ',"ka"), ('キ',"ki"),  ('ク',"ku"),  ('ケ',"ke"), ('コ',"ko"),
    ('ガ',"ga"), ('ギ',"gi"),  ('グ',"gu"),  ('ゲ',"ge"), ('ゴ',"go"),
@@ -46,6 +52,11 @@ pub static KATAKANA_TO_ROMAJI: [(char,&str); 73] = [
    ('ラ',"ra"), ('リ',"ri"),  ('ル',"ru"),  ('レ',"re"), ('ロ',"ro"),
    ('ワ',"wa"), ('ヰ',"wi"),		    ('ヱ',"we"), ('ヲ',"wo"),
    ('ン',"n"),
+   ('ヴ',"v"),
+   ('ッ',"xtsu"),
+   ('ャ',"xya"),              ('ュ',"xyu"),              ('ョ',"xyo"),
+   ('ァ',"xa"), ('ィ',"xi"),  ('ゥ',"xu"),  ('ェ',"xe"), ('ォ',"xo"),
+   ('ヵ',"xka"), ('ヶ',"xke")
 ];
 lazy_static! {
    pub static ref K2R: HashMap<char,String> = {
