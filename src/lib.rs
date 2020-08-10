@@ -159,10 +159,17 @@ pub fn stroke_count(c: char) -> u64 {
    unimplemented!("stroke_count has not been implemented")
 }
 pub fn radical(c: char) -> Option<char> {
+   //dictionary-order radical
    let _ = c;
    unimplemented!("radical has not been implemented")
 }
+pub fn radicals(c: char) -> Vec<char> {
+   //any radical in character
+   let _ = c;
+   unimplemented!("radicals has not been implemented")
+}
 pub fn parts(c: char) -> Vec<char> {
+   //any part or radical in character
    let _ = c;
    unimplemented!("parts has not been implemented")
 }
