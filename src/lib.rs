@@ -84,7 +84,7 @@ pub struct JouyouRecord {
 lazy_static! {
    pub static ref JOUYOU_TABLE: Vec<JouyouRecord> = {
       let mut ks = Vec::new();
-      for line in include_str!("../data/jouyou.txt").split('\n') {
+      for line in include_str!("../wikipedia_data/jouyou.txt").split('\n') {
          if line.len()==0 { continue; }
          if &line[0..1]=="#" { continue; }
          let vs = line.split('\t').collect::<Vec<&str>>();
