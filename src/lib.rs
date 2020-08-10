@@ -153,3 +153,16 @@ pub fn romaji(s: &str) -> String {
    }
    o
 }
+
+pub fn stroke_count(c: char) -> u64 {
+   let _ = c;
+   unimplemented!("stroke_count has not been implemented")
+}
+pub fn radical(c: char) -> Option<char> {
+   let _ = c;
+   unimplemented!("radical has not been implemented")
+}
+pub fn parts(c: char) -> Vec<char> {
+   let _ = c;
+   unimplemented!("parts has not been implemented")
+}
