@@ -110,6 +110,23 @@ lazy_static! {
       }
       index
    };
+   pub static ref JOUYOU_ATEJI_INDEX: HashMap<char,Vec<char>> = {
+      let mut index: HashMap<char,Vec<char>> = HashMap::new();
+      for (_,ts) in JOUYOU_PRONUNCIATION_INDEX.iter() {
+         for ljr in ts.iter() {
+            for rjr in ts.iter() {
+               if ljr.number==rjr.number { continue; }
+               if !index.contains_key(&ljr.new) {
+                  index.insert(ljr.new, Vec::new());
+               }
+               if let Some(cs) = index.get_mut(&ljr.new) {
+                  cs.push(rjr.new);
+               }
+            }
+         }
+      }
+      index
+   };
 }
 
 pub fn romaji(s: &str) -> String {

@@ -9,3 +9,9 @@ fn kanji1() {
 fn kanji2() {
    assert_eq!(JOUYOU_PRONUNCIATION_INDEX.len(), 1114);
 }
+
+#[test]
+fn kanji3() {
+   assert_eq!(JOUYOU_ATEJI_INDEX.len(), 2083);
+   assert_eq!(JOUYOU_ATEJI_INDEX.get(&'六'), Some(&vec!['緑', '録', '麓', '群', '向', '蒸', '武', '謀', '矛', '務', '無', '夢', '霧']));
+}
