@@ -140,6 +140,30 @@ lazy_static! {
    };
 }
 
+pub struct UnihanRadical {
+   pub number: u64,
+   pub point: char,
+}
+pub struct UnihanRadicalStrokeCount {
+   pub stroke_count: u64,
+   pub radicals: Vec<char>,
+}
+
+lazy_static! {
+   pub static ref UNIHAN_RADICALS: HashMap<u64,UnihanRadical> = {
+      let index: HashMap<u64,UnihanRadical> = HashMap::new();
+      for _line in include_str!("../unihan_data/Unihan_RadicalStrokeCounts.txt").split('\n') {
+      }
+      index
+   };
+   pub static ref UNIHAN_RADICAL_STROKE_COUNTS: HashMap<char,UnihanRadicalStrokeCount> = {
+      let index: HashMap<char,UnihanRadicalStrokeCount> = HashMap::new();
+      for _line in include_str!("../unihan_data/Unihan_RadicalStrokeCounts.txt").split('\n') {
+      }
+      index
+   };
+}
+
 pub fn romaji(s: &str) -> String {
    let mut o = String::new();
    for c in s.chars() {
