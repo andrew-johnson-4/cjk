@@ -42,7 +42,7 @@
 41	一		一	1	1		one	イチ、イツ、ひと、ひと-つ
 42	壱	壹	士	7	S		one (falsification prevention)	イチ
 43	逸	逸	辵	11	S		deviate	イツ
-44	茨		艸	9	S	2010	thorn	いばら[6]
+44	茨		艸	9	S	2010	thorn	いばら
 45	芋		艸	6	S		potato	いも
 46	引		弓	4	2		pull	イン、ひ-く、ひ-ける
 47	印		卩	6	4		mark	イン、しるし
@@ -116,7 +116,7 @@
 115	翁		羽	10	S		venerable old man	オウ
 116	奥	奧	大	12	S		heart	オウ、おく
 117	横	橫	木	15	3		side	オウ、よこ
-118	岡		山	8	S	2010	hill	おか[6]
+118	岡		山	8	S	2010	hill	おか
 119	屋		尸	9	3		roof	オク、や
 120	億		人	15	4		hundred million	オク
 121	憶		心	16	S		recollection	オク
@@ -1555,7 +1555,7 @@
 1554	毒		毋	8	4		poison	ドク
 1555	独	獨	犬	9	5		alone	ドク、ひと-り
 1556	読	讀	言	14	2		read	ドク、トク、トウ、よ-む
-1557	栃		木	9	S	2010	horse chestnut	とち[6]
+1557	栃		木	9	S	2010	horse chestnut	とち
 1558	凸		凵	5	S	1981	convex	トツ
 1559	突	突	穴	8	S		stab	トツ、つ-く
 1560	届	屆	尸	8	6		deliver	とど-ける、とど-く

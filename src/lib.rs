@@ -1,7 +1,7 @@
 use std::collections::{HashMap};
 use lazy_static::lazy_static;
 
-pub static HIRAGANA_TO_ROMAJI: [(char,&str); 72] = [
+pub static HIRAGANA_TO_ROMAJI: [(char,&str); 73] = [
    ('あ',"a"),  ('い',"i"),   ('う',"u"),   ('え',"e"),  ('お',"o"),
    ('か',"ka"), ('き',"ki"),  ('く',"ku"),  ('け',"ke"), ('こ',"ko"),
    ('が',"ga"),	('ぎ',"gi"),  ('ぐ',"gu"),  ('げ',"ge"), ('ご',"go"),
@@ -17,6 +17,7 @@ pub static HIRAGANA_TO_ROMAJI: [(char,&str); 72] = [
    ('や',"ya"),	              ('ゆ',"yu"),               ('よ',"yo"),
    ('ら',"ra"),	('り',"ri"),  ('る',"ru"),  ('れ',"re"), ('ろ',"ro"),
    ('わ',"wa"),	('ゐ',"wi"),                ('ゑ',"we"), ('を',"wo"),
+   ('ん',"n"),
 ];
 lazy_static! {
    pub static ref H2R: HashMap<char,String> = {
@@ -28,7 +29,7 @@ lazy_static! {
    };
 }
 
-pub static KATAKANA_TO_ROMAJI: [(char,&str); 72] = [
+pub static KATAKANA_TO_ROMAJI: [(char,&str); 73] = [
    ('ア',"a"),  ('イ',"i"),   ('ウ',"u"),   ('エ',"e"),	 ('オ',"o"),
    ('カ',"ka"), ('キ',"ki"),  ('ク',"ku"),  ('ケ',"ke"), ('コ',"ko"),
    ('ガ',"ga"), ('ギ',"gi"),  ('グ',"gu"),  ('ゲ',"ge"), ('ゴ',"go"),
@@ -44,6 +45,7 @@ pub static KATAKANA_TO_ROMAJI: [(char,&str); 72] = [
    ('ヤ',"ya"),		      ('ユ',"yu"),		 ('ヨ',"yo"),
    ('ラ',"ra"), ('リ',"ri"),  ('ル',"ru"),  ('レ',"re"), ('ロ',"ro"),
    ('ワ',"wa"), ('ヰ',"wi"),		    ('ヱ',"we"), ('ヲ',"wo"),
+   ('ン',"n"),
 ];
 lazy_static! {
    pub static ref K2R: HashMap<char,String> = {
@@ -55,6 +57,7 @@ lazy_static! {
    };
 }
 
+#[derive(Clone)]
 pub struct JouyouRecord {
    pub number: u64,
    pub new: char,
@@ -87,6 +90,25 @@ lazy_static! {
          });
       }
       ks
+   };
+   pub static ref JOUYOU_PRONUNCIATION_INDEX: HashMap<String,Vec<JouyouRecord>> = {
+      let mut index: HashMap<String,Vec<JouyouRecord>> = HashMap::new();
+      for jr in JOUYOU_TABLE.iter() {
+         for p in jr.pronunciation.iter() {
+            if let Some(pr) = p.split('-').next() {
+               let pr = romaji(pr);
+               if !index.contains_key(&pr) {
+                  index.insert(pr.clone(), Vec::new());
+               }
+               if let Some(ps) = index.get_mut(&pr) {
+                  if !ps.iter().any(|pjr| (*pjr).number==jr.number) {
+                     ps.push(jr.clone());
+                  }
+               }
+            }
+         }
+      }
+      index
    };
 }
 
