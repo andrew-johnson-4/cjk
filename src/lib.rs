@@ -207,7 +207,19 @@ lazy_static! {
          if vs[1]=="kRSAdobe_Japan1_6" {
             let code = vs[0];
             let code_char = decode_unicode_32(code).chars().next().unwrap_or(' ');
-            println!("{} => {}", code_char, line);
+            let indices = vs[2].split(' ').collect::<Vec<&str>>();
+            let mut stroke_count: Option<u64> = None;
+            for index in vs[2].split(' ') {
+               let mut adobe = index.split('+');
+               let canonical = adobe.next().unwrap();
+               let cid = adobe.next().unwrap();
+               let radical = adobe.next().unwrap();
+               let mut radical_parts = radical.split('.');
+               let radical_index = radical_parts.next().unwrap().parse::<u64>().unwrap();
+               let radical_stroke_count = radical_parts.next().unwrap().parse::<u64>().unwrap();
+               let remainder_stroke_count = radical_parts.next().unwrap().parse::<u64>().unwrap();
+               println!("{} => {}+{}+{}.{}.{}", code_char, canonical, cid, radical_index, radical_stroke_count, remainder_stroke_count);
+            }
          }
       }
       index
