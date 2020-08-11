@@ -1,6 +1,6 @@
 [package]
 name = "cjk"
-version = "0.0.10"
+version = "0.0.11"
 authors = ["Andrew <andrew@subarctic.org>"]
 license = "MIT OR Apache-2.0"
 description = "Answer Boolean Questions and Queries about CJK and related character sets"
@@ -12,3 +12,5 @@ keywords = ["cjk","unicode","charset","property","query"]
 
 [dependencies]
 lazy_static = "1.4"
+widestring = "0.4"
+hex = "0.4"

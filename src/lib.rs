@@ -1,5 +1,6 @@
 use std::collections::{HashMap};
 use lazy_static::lazy_static;
+use widestring::U32String;
 
 pub static HIRAGANA_TO_ROMAJI: [(char,&str); 83] = [
    ('あ',"a"),  ('い',"i"),   ('う',"u"),   ('え',"e"),  ('お',"o"),
@@ -150,15 +151,54 @@ pub struct UnihanRadicalStrokeCount {
 }
 
 lazy_static! {
-   pub static ref UNIHAN_RADICALS: HashMap<u64,UnihanRadical> = {
-      let index: HashMap<u64,UnihanRadical> = HashMap::new();
-      for _line in include_str!("../unihan_data/Unihan_RadicalStrokeCounts.txt").split('\n') {
+   pub static ref UNIHAN_RADICALS: HashMap<u64,Vec<UnihanRadical>> = {
+      let mut index: HashMap<u64,Vec<UnihanRadical>> = HashMap::new();
+      for line in include_str!("../unihan_data/Unihan_RadicalStrokeCounts.txt").split('\n') {
+         if line.len()==0 { continue; }
+         if &line[0..1]=="#" { continue; }
+         let vs = line.split('\t').collect::<Vec<&str>>();
+         if vs[1]=="kRSKangXi" {
+            let code = vs[0];
+            let hex_code = if code.len()%2==0 {
+               format!("{}", &code[2..])
+            } else {
+               format!("0{}", &code[2..])
+            };
+            if let Ok(mut hs) = hex::decode(hex_code) {
+               while hs.len()<4 { hs.insert(0,0); }
+               let h = hs[0] as u32;
+               let h = h*256 + (hs[1] as u32);
+               let h = h*256 + (hs[2] as u32);
+               let h = h*256 + (hs[3] as u32);
+               let wc = U32String::from_vec(vec![h]);
+               let code_char = wc.to_string_lossy();
+               let code_char = if code_char.len()>0
+                    { code_char.chars().next().unwrap() }
+               else { ' ' };
+               let mut radical_index = vs[2].split('.');
+               let radical = radical_index.next().unwrap().parse::<u64>().unwrap();
+               let remainder = radical_index.next().unwrap().parse::<i64>().unwrap();
+               if remainder==0 {
+                  if !index.contains_key(&radical) {
+                     index.insert(radical, Vec::new());
+                  }
+                  if let Some(cs) = index.get_mut(&radical) {
+                     cs.push(UnihanRadical { number:radical, point:code_char });
+                  }
+               }
+            } else {
+               println!("could not decode hex {}", &code[2..]);
+            }
+         }
       }
       index
    };
    pub static ref UNIHAN_RADICAL_STROKE_COUNTS: HashMap<char,UnihanRadicalStrokeCount> = {
       let index: HashMap<char,UnihanRadicalStrokeCount> = HashMap::new();
-      for _line in include_str!("../unihan_data/Unihan_RadicalStrokeCounts.txt").split('\n') {
+      for line in include_str!("../unihan_data/Unihan_RadicalStrokeCounts.txt").split('\n') {
+         if line.len()==0 { continue; }
+         if &line[0..1]=="#" { continue; }
+         let _vs = line.split('\t').collect::<Vec<&str>>();
       }
       index
    };
