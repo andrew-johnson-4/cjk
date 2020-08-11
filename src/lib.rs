@@ -211,7 +211,7 @@ lazy_static! {
             for index in vs[2].split(' ') {
                let mut adobe = index.split('+');
                let canonical = adobe.next().unwrap();
-               let cid = adobe.next().unwrap();
+               let _cid = adobe.next().unwrap();
                let radical = adobe.next().unwrap();
                let mut radical_parts = radical.split('.');
                let radical_index = radical_parts.next().unwrap().parse::<u64>().unwrap();
@@ -219,16 +219,47 @@ lazy_static! {
                let remainder_stroke_count = radical_parts.next().unwrap().parse::<u64>().unwrap();
                radicals.push(UnihanRadicalStrokeCount {
                   radical: radical_index,
-                  canonical: cid=="C",
+                  canonical: canonical=="C",
                   radical_stroke_count: radical_stroke_count,
                   remainder_stroke_count: remainder_stroke_count,
                });
-               println!("{} => {}+{}+{}.{}.{}", code_char, canonical, cid, radical_index, radical_stroke_count, remainder_stroke_count);
             }
             index.insert(code_char, UnihanCharacter {
                point: code_char,
                radicals: radicals,
             });
+         } else if vs[1]=="kRSKangXi" {
+         } else {
+            unreachable!();
+         }
+      }
+      for line in include_str!("../unihan_data/Unihan_RadicalStrokeCounts.txt").split('\n') {
+         if line.len()==0 { continue; }
+         if &line[0..1]=="#" { continue; }
+         let vs = line.split('\t').collect::<Vec<&str>>();
+         let code = vs[0];
+         let code_char = decode_unicode_32(code).chars().next().unwrap_or(' ');
+         if vs[1]=="kRSAdobe_Japan1_6" {
+         } else if vs[1]=="kRSKangXi" {
+            if !index.contains_key(&code_char) {
+               index.insert(code_char, UnihanCharacter {
+                  point: code_char,
+                  radicals: Vec::new(),
+               });
+            }
+            let ref mut rs = index.get_mut(&code_char).unwrap().radicals;
+            let mut radical_index = vs[2].split('.');
+            let radical = radical_index.next().unwrap().parse::<u64>().unwrap();
+            let remainder = radical_index.next().unwrap().parse::<u64>().unwrap_or(0);
+            if rs.iter().any(|r| r.radical==radical && r.remainder_stroke_count==remainder) { continue; }
+            rs.push(UnihanRadicalStrokeCount {
+               radical: radical,
+               canonical: false,
+               radical_stroke_count: 0,
+               remainder_stroke_count: remainder,
+            });
+         } else {
+            unreachable!();
          }
       }
       index
