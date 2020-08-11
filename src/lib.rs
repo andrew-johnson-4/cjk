@@ -144,15 +144,16 @@ lazy_static! {
 pub struct UnihanRadical {
    pub number: u64,
    pub point: char,
+   pub variants: Vec<char>,
 }
 pub struct UnihanRadicalStrokeCount {
    pub stroke_count: u64,
-   pub radicals: Vec<char>,
+   pub radicals: Vec<(u64,u64)>,
 }
 
 lazy_static! {
-   pub static ref UNIHAN_RADICALS: HashMap<u64,Vec<UnihanRadical>> = {
-      let mut index: HashMap<u64,Vec<UnihanRadical>> = HashMap::new();
+   pub static ref UNIHAN_RADICALS: HashMap<u64,UnihanRadical> = {
+      let mut index: HashMap<u64,UnihanRadical> = HashMap::new();
       for line in include_str!("../unihan_data/Unihan_RadicalStrokeCounts.txt").split('\n') {
          if line.len()==0 { continue; }
          if &line[0..1]=="#" { continue; }
@@ -180,10 +181,10 @@ lazy_static! {
                let remainder = radical_index.next().unwrap().parse::<i64>().unwrap();
                if remainder==0 {
                   if !index.contains_key(&radical) {
-                     index.insert(radical, Vec::new());
+                     index.insert(radical, UnihanRadical { number:radical, point:code_char, variants:vec![code_char]});
                   }
-                  if let Some(cs) = index.get_mut(&radical) {
-                     cs.push(UnihanRadical { number:radical, point:code_char });
+                  if let Some(c) = index.get_mut(&radical) {
+                     c.variants.push(code_char);
                   }
                }
             } else {
