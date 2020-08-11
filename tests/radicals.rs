@@ -243,3 +243,8 @@ fn radical2() {
    assert_eq!(UNIHAN_RADICALS.get(&213).unwrap().point, '亀'); 
    assert_eq!(UNIHAN_RADICALS.get(&214).unwrap().point, '龠'); 
 }
+
+#[test]
+fn radical3() {
+   assert_eq!(UNIHAN_RADICALS.get(&1).unwrap().variants, vec!['一']);
+}

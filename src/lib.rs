@@ -181,11 +181,10 @@ lazy_static! {
                let remainder = radical_index.next().unwrap().parse::<i64>().unwrap();
                if remainder==0 {
                   if !index.contains_key(&radical) {
-                     index.insert(radical, UnihanRadical { number:radical, point:code_char, variants:vec![code_char]});
+                     index.insert(radical, UnihanRadical { number:radical, point:code_char, variants:vec![]});
                   }
-                  if let Some(c) = index.get_mut(&radical) {
-                     c.variants.push(code_char);
-                  }
+                  let c = index.get_mut(&radical).unwrap();
+                  c.variants.push(code_char);
                }
             } else {
                println!("could not decode hex {}", &code[2..]);
