@@ -146,9 +146,15 @@ pub struct UnihanRadical {
    pub point: char,
    pub variants: Vec<char>,
 }
-pub struct UnihanRadicalStrokeCount {
+pub struct UnihanCharacter {
    pub stroke_count: u64,
-   pub radicals: Vec<(u64,u64)>,
+   pub radicals: Vec<UnihanRadicalStrokeCount>,
+}
+pub struct UnihanRadicalStrokeCount {
+   pub radical: u64,
+   pub canonical: bool,
+   pub radical_stroke_count: u64,
+   pub remainder_stroke_count: u64,
 }
 
 fn decode_unicode_32(code: &str) -> String {
@@ -192,12 +198,17 @@ lazy_static! {
       }
       index
    };
-   pub static ref UNIHAN_RADICAL_STROKE_COUNTS: HashMap<char,UnihanRadicalStrokeCount> = {
-      let index: HashMap<char,UnihanRadicalStrokeCount> = HashMap::new();
+   pub static ref UNIHAN_CHARACTERS: HashMap<char,UnihanCharacter> = {
+      let index: HashMap<char,UnihanCharacter> = HashMap::new();
       for line in include_str!("../unihan_data/Unihan_RadicalStrokeCounts.txt").split('\n') {
          if line.len()==0 { continue; }
          if &line[0..1]=="#" { continue; }
-         let _vs = line.split('\t').collect::<Vec<&str>>();
+         let vs = line.split('\t').collect::<Vec<&str>>();
+         if vs[1]=="kRSAdobe_Japan1_6" {
+            let code = vs[0];
+            let code_char = decode_unicode_32(code).chars().next().unwrap_or(' ');
+            println!("{} => {}", code_char, line);
+         }
       }
       index
    };
