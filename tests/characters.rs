@@ -2,5 +2,5 @@ use cjk::*;
 
 #[test]
 fn char1() {
-   assert_eq!(UNIHAN_CHARACTERS.len(), 214);
+   assert_eq!(UNIHAN_CHARACTERS.len(), 64059);
 }

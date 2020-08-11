@@ -147,7 +147,7 @@ pub struct UnihanRadical {
    pub variants: Vec<char>,
 }
 pub struct UnihanCharacter {
-   pub stroke_count: u64,
+   pub point: char,
    pub radicals: Vec<UnihanRadicalStrokeCount>,
 }
 pub struct UnihanRadicalStrokeCount {
@@ -199,16 +199,15 @@ lazy_static! {
       index
    };
    pub static ref UNIHAN_CHARACTERS: HashMap<char,UnihanCharacter> = {
-      let index: HashMap<char,UnihanCharacter> = HashMap::new();
+      let mut index: HashMap<char,UnihanCharacter> = HashMap::new();
       for line in include_str!("../unihan_data/Unihan_RadicalStrokeCounts.txt").split('\n') {
          if line.len()==0 { continue; }
          if &line[0..1]=="#" { continue; }
          let vs = line.split('\t').collect::<Vec<&str>>();
+         let code = vs[0];
+         let code_char = decode_unicode_32(code).chars().next().unwrap_or(' ');
          if vs[1]=="kRSAdobe_Japan1_6" {
-            let code = vs[0];
-            let code_char = decode_unicode_32(code).chars().next().unwrap_or(' ');
-            let indices = vs[2].split(' ').collect::<Vec<&str>>();
-            let mut stroke_count: Option<u64> = None;
+            let mut radicals = Vec::new();
             for index in vs[2].split(' ') {
                let mut adobe = index.split('+');
                let canonical = adobe.next().unwrap();
@@ -218,8 +217,18 @@ lazy_static! {
                let radical_index = radical_parts.next().unwrap().parse::<u64>().unwrap();
                let radical_stroke_count = radical_parts.next().unwrap().parse::<u64>().unwrap();
                let remainder_stroke_count = radical_parts.next().unwrap().parse::<u64>().unwrap();
+               radicals.push(UnihanRadicalStrokeCount {
+                  radical: radical_index,
+                  canonical: cid=="C",
+                  radical_stroke_count: radical_stroke_count,
+                  remainder_stroke_count: remainder_stroke_count,
+               });
                println!("{} => {}+{}+{}.{}.{}", code_char, canonical, cid, radical_index, radical_stroke_count, remainder_stroke_count);
             }
+            index.insert(code_char, UnihanCharacter {
+               point: code_char,
+               radicals: radicals,
+            });
          }
       }
       index
