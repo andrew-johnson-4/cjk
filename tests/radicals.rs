@@ -29,27 +29,27 @@ fn radical2() {
    assert_eq!(UNIHAN_RADICALS.get(&19).unwrap().point, '力'); 
    assert_eq!(UNIHAN_RADICALS.get(&20).unwrap().point, '勹'); 
 
-   assert_eq!(UNIHAN_RADICALS.get(&21).unwrap().point, ' '); 
-   assert_eq!(UNIHAN_RADICALS.get(&22).unwrap().point, ' '); 
-   assert_eq!(UNIHAN_RADICALS.get(&23).unwrap().point, ' '); 
-   assert_eq!(UNIHAN_RADICALS.get(&24).unwrap().point, ' '); 
-   assert_eq!(UNIHAN_RADICALS.get(&25).unwrap().point, ' '); 
-   assert_eq!(UNIHAN_RADICALS.get(&26).unwrap().point, ' '); 
-   assert_eq!(UNIHAN_RADICALS.get(&27).unwrap().point, ' '); 
-   assert_eq!(UNIHAN_RADICALS.get(&28).unwrap().point, ' '); 
-   assert_eq!(UNIHAN_RADICALS.get(&29).unwrap().point, ' '); 
-   assert_eq!(UNIHAN_RADICALS.get(&30).unwrap().point, ' '); 
+   assert_eq!(UNIHAN_RADICALS.get(&21).unwrap().point, '匕'); 
+   assert_eq!(UNIHAN_RADICALS.get(&22).unwrap().point, '匚'); 
+   assert_eq!(UNIHAN_RADICALS.get(&23).unwrap().point, '匸'); 
+   assert_eq!(UNIHAN_RADICALS.get(&24).unwrap().point, '十'); 
+   assert_eq!(UNIHAN_RADICALS.get(&25).unwrap().point, '卜'); 
+   assert_eq!(UNIHAN_RADICALS.get(&26).unwrap().point, '卩'); 
+   assert_eq!(UNIHAN_RADICALS.get(&27).unwrap().point, '厂'); 
+   assert_eq!(UNIHAN_RADICALS.get(&28).unwrap().point, '厶'); 
+   assert_eq!(UNIHAN_RADICALS.get(&29).unwrap().point, '又'); 
+   assert_eq!(UNIHAN_RADICALS.get(&30).unwrap().point, '口'); 
 
-   assert_eq!(UNIHAN_RADICALS.get(&31).unwrap().point, ' '); 
-   assert_eq!(UNIHAN_RADICALS.get(&32).unwrap().point, ' '); 
-   assert_eq!(UNIHAN_RADICALS.get(&33).unwrap().point, ' '); 
-   assert_eq!(UNIHAN_RADICALS.get(&34).unwrap().point, ' '); 
-   assert_eq!(UNIHAN_RADICALS.get(&35).unwrap().point, ' '); 
-   assert_eq!(UNIHAN_RADICALS.get(&36).unwrap().point, ' '); 
-   assert_eq!(UNIHAN_RADICALS.get(&37).unwrap().point, ' '); 
-   assert_eq!(UNIHAN_RADICALS.get(&38).unwrap().point, ' '); 
-   assert_eq!(UNIHAN_RADICALS.get(&39).unwrap().point, ' '); 
-   assert_eq!(UNIHAN_RADICALS.get(&40).unwrap().point, ' '); 
+   assert_eq!(UNIHAN_RADICALS.get(&31).unwrap().point, '囗'); 
+   assert_eq!(UNIHAN_RADICALS.get(&32).unwrap().point, '土'); 
+   assert_eq!(UNIHAN_RADICALS.get(&33).unwrap().point, '士'); 
+   assert_eq!(UNIHAN_RADICALS.get(&34).unwrap().point, '夂'); 
+   assert_eq!(UNIHAN_RADICALS.get(&35).unwrap().point, '夊'); 
+   assert_eq!(UNIHAN_RADICALS.get(&36).unwrap().point, '夕'); 
+   assert_eq!(UNIHAN_RADICALS.get(&37).unwrap().point, '大'); 
+   assert_eq!(UNIHAN_RADICALS.get(&38).unwrap().point, '女'); 
+   assert_eq!(UNIHAN_RADICALS.get(&39).unwrap().point, '子'); 
+   assert_eq!(UNIHAN_RADICALS.get(&40).unwrap().point, '宀'); 
 
    assert_eq!(UNIHAN_RADICALS.get(&41).unwrap().point, ' '); 
    assert_eq!(UNIHAN_RADICALS.get(&42).unwrap().point, ' '); 
