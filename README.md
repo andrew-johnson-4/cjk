@@ -4,6 +4,7 @@
 [![Documentation](https://img.shields.io/badge/api-rustdoc-blue.svg)](https://docs.rs/cjk/)
 [![Build Nightly](https://github.com/andrew-johnson-4/cjk/workflows/BuildNightly/badge.svg)](https://github.com/andrew-johnson-4/cjk)
 [![Build](https://github.com/andrew-johnson-4/cjk/workflows/Build/badge.svg)](https://github.com/andrew-johnson-4/cjk)
+[![Donate using Liberapay](https://liberapay.com/assets/widgets/donate.svg)](https://liberapay.com/andrew-johnson-4/donate)
 
 Answer Boolean Questions and Queries about CJK and related character sets
 
