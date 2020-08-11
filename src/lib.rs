@@ -151,6 +151,23 @@ pub struct UnihanRadicalStrokeCount {
    pub radicals: Vec<(u64,u64)>,
 }
 
+fn decode_unicode_32(code: &str) -> String {
+   let hex_code = if code.len()%2==0 {
+      format!("{}", &code[2..])
+   } else {
+      format!("0{}", &code[2..])
+   };
+   if let Ok(mut hs) = hex::decode(hex_code) {
+      while hs.len()<4 { hs.insert(0,0); }
+      let h = hs[0] as u32;
+      let h = h*256 + (hs[1] as u32);
+      let h = h*256 + (hs[2] as u32);
+      let h = h*256 + (hs[3] as u32);
+      let wc = U32String::from_vec(vec![h]);
+      wc.to_string_lossy()
+   } else { "".to_string() }
+}
+
 lazy_static! {
    pub static ref UNIHAN_RADICALS: HashMap<u64,UnihanRadical> = {
       let mut index: HashMap<u64,UnihanRadical> = HashMap::new();
@@ -160,34 +177,16 @@ lazy_static! {
          let vs = line.split('\t').collect::<Vec<&str>>();
          if vs[1]=="kRSKangXi" {
             let code = vs[0];
-            let hex_code = if code.len()%2==0 {
-               format!("{}", &code[2..])
-            } else {
-               format!("0{}", &code[2..])
-            };
-            if let Ok(mut hs) = hex::decode(hex_code) {
-               while hs.len()<4 { hs.insert(0,0); }
-               let h = hs[0] as u32;
-               let h = h*256 + (hs[1] as u32);
-               let h = h*256 + (hs[2] as u32);
-               let h = h*256 + (hs[3] as u32);
-               let wc = U32String::from_vec(vec![h]);
-               let code_char = wc.to_string_lossy();
-               let code_char = if code_char.len()>0
-                    { code_char.chars().next().unwrap() }
-               else { ' ' };
-               let mut radical_index = vs[2].split('.');
-               let radical = radical_index.next().unwrap().parse::<u64>().unwrap();
-               let remainder = radical_index.next().unwrap().parse::<i64>().unwrap();
-               if remainder==0 {
-                  if !index.contains_key(&radical) {
-                     index.insert(radical, UnihanRadical { number:radical, point:code_char, variants:vec![]});
-                  }
-                  let c = index.get_mut(&radical).unwrap();
-                  c.variants.push(code_char);
+            let code_char = decode_unicode_32(code).chars().next().unwrap_or(' ');
+            let mut radical_index = vs[2].split('.');
+            let radical = radical_index.next().unwrap().parse::<u64>().unwrap();
+            let remainder = radical_index.next().unwrap().parse::<i64>().unwrap();
+            if remainder==0 {
+               if !index.contains_key(&radical) {
+                  index.insert(radical, UnihanRadical { number:radical, point:code_char, variants:vec![]});
                }
-            } else {
-               println!("could not decode hex {}", &code[2..]);
+               let c = index.get_mut(&radical).unwrap();
+               c.variants.push(code_char);
             }
          }
       }
