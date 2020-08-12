@@ -262,6 +262,26 @@ lazy_static! {
             unreachable!();
          }
       }
+      let mut rsc = HashMap::new();
+      rsc.insert(&52, 3); //乡 3
+      rsc.insert(&102, 5); //曱 5
+      for (ri,r) in UNIHAN_RADICALS.iter() {
+         //if index.get(&r.point).unwrap().radicals.iter().all(|rr| rr.radical_stroke_count==0) {
+         //   println!("no radical count for {} #{}", r.point, ri);
+         //}
+         for rr in index.get(&r.point).unwrap().radicals.iter() {
+            if rr.radical_stroke_count==0 { continue; }
+            rsc.insert(ri, rr.radical_stroke_count);
+            break;
+         }
+      }
+      for (_,ch) in index.iter_mut() {
+         for r in ch.radicals.iter_mut() {
+            if r.radical_stroke_count == 0 {
+               r.radical_stroke_count = *rsc.get(&r.radical).unwrap();
+            }
+         }
+      }
       index
    };
 }

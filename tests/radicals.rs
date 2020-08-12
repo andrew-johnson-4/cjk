@@ -248,3 +248,10 @@ fn radical2() {
 fn radical3() {
    assert_eq!(UNIHAN_RADICALS.get(&1).unwrap().variants, vec!['一']);
 }
+
+#[test]
+fn radical4() {
+   for (_,ch) in UNIHAN_CHARACTERS.iter() {
+      assert!(ch.radicals.iter().all(|r| r.radical_stroke_count>0));
+   }
+}
