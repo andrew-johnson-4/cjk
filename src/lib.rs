@@ -326,6 +326,9 @@ pub fn parts(c: char) -> Vec<char> {
    unimplemented!("parts has not been implemented")
 }
 
+pub fn is_traditional_chinese(s: &str) -> bool {
+   s.chars().all(|c| UNIHAN_CHARACTERS.contains_key(&c))
+}
 pub fn is_simplified_chinese(s: &str) -> bool {
    let _ = s;
    unimplemented!("is_simplified_chinese has not been implemented")
