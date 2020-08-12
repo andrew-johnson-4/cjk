@@ -299,3 +299,20 @@ pub fn parts(c: char) -> Vec<char> {
    let _ = c;
    unimplemented!("parts has not been implemented")
 }
+
+pub fn is_simplified_chinese(s: &str) -> bool {
+   let _ = s;
+   unimplemented!("is_simplified_chinese has not been implemented")
+}
+pub fn is_japanese(s: &str) -> bool {
+   let _ = s;
+   unimplemented!("is_japanese has not been implemented")
+}
+pub fn is_korean(s: &str) -> bool {
+   let _ = s;
+   unimplemented!("is_korean has not been implemented")
+}
+pub fn is_vietnamese(s: &str) -> bool {
+   let _ = s;
+   unimplemented!("is_vietnamese has not been implemented")
+}
