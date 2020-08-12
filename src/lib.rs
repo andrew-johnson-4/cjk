@@ -1,4 +1,4 @@
-use std::collections::{HashMap};
+use std::collections::{HashMap,HashSet};
 use lazy_static::lazy_static;
 use widestring::U32String;
 
@@ -284,6 +284,28 @@ lazy_static! {
       }
       index
    };
+   pub static ref UNIHAN_SIMPLIFIED_CHINESE: HashSet<char> = {
+/*
+#       kSemanticVariant
+#       kSimplifiedVariant
+#       kSpecializedSemanticVariant
+#       kSpoofingVariant
+#       kTraditionalVariant
+#       kZVariant
+*/
+      let mut index = HashSet::new();
+      for line in include_str!("../unihan_data/Unihan_Variants.txt").split('\n') {
+         if line.len()==0 { continue; }
+         if &line[0..1]=="#" { continue; }
+         let vs = line.split('\t').collect::<Vec<&str>>();
+         let code = vs[0];
+         let code_char = decode_unicode_32(code).chars().next().unwrap_or(' ');
+         if vs[1]=="kTraditionalVariant" {
+            index.insert(code_char);
+         }
+      }
+      index
+   };
 }
 
 pub fn romaji(s: &str) -> String {
@@ -330,8 +352,7 @@ pub fn is_traditional_chinese(s: &str) -> bool {
    s.chars().all(|c| UNIHAN_CHARACTERS.contains_key(&c))
 }
 pub fn is_simplified_chinese(s: &str) -> bool {
-   let _ = s;
-   unimplemented!("is_simplified_chinese has not been implemented")
+   s.chars().all(|c| UNIHAN_SIMPLIFIED_CHINESE.contains(&c))
 }
 pub fn is_japanese(s: &str) -> bool {
    let _ = s;
