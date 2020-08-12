@@ -304,19 +304,25 @@ pub fn stroke_count(c: char) -> u64 {
    let _ = c;
    unimplemented!("stroke_count has not been implemented")
 }
-pub fn radical(c: char) -> Option<char> {
+pub fn radical(c: char) -> Option<u64> {
    //dictionary-order radical
-   let _ = c;
-   unimplemented!("radical has not been implemented")
+   if let Some(ch) = UNIHAN_CHARACTERS.get(&c) {
+      ch.radicals.iter().filter(|r| r.canonical).map(|r| r.radical).next()
+   } else {
+      None
+   }
 }
-pub fn radicals(c: char) -> Vec<char> {
+pub fn radicals(c: char) -> Vec<u64> {
    //any radical in character
-   let _ = c;
-   unimplemented!("radicals has not been implemented")
+   if let Some(ch) = UNIHAN_CHARACTERS.get(&c) {
+      ch.radicals.iter().filter(|r| r.canonical).map(|r| r.radical).collect::<Vec<u64>>()
+   } else {
+      Vec::new()
+   }
 }
 pub fn parts(c: char) -> Vec<char> {
    //any part or radical in character
-   let _ = c;
+   let _  = c;
    unimplemented!("parts has not been implemented")
 }
 
