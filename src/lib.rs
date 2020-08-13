@@ -34,6 +34,13 @@ lazy_static! {
       }
       ktr
    };
+   pub static ref HIRAGANA: HashSet<char> = {
+      let mut index = HashSet::new();
+      for (c,_) in HIRAGANA_TO_ROMAJI.iter() {
+         index.insert(*c);
+      }
+      index
+   };
 }
 
 pub static KATAKANA_TO_ROMAJI: [(char,&str); 85] = [
@@ -66,6 +73,13 @@ lazy_static! {
          ktr.insert(*c,r.to_string());
       }
       ktr
+   };
+   pub static ref KATAKANA: HashSet<char> = {
+      let mut index = HashSet::new();
+      for (c,_) in KATAKANA_TO_ROMAJI.iter() {
+         index.insert(*c);
+      }
+      index
    };
 }
 
@@ -139,6 +153,13 @@ lazy_static! {
       }
       index
    };
+   pub static ref JOUYOU_KANJI: HashSet<char> = {
+      let mut index: HashSet<char> = HashSet::new();
+      for (c,_) in JOUYOU_ATEJI_INDEX.iter() {
+         index.insert(*c);
+      }
+      index
+   };
    pub static ref JAPANESE_PUNCTUATION: HashSet<char> = {
       let mut index = HashSet::new();
       for c in "⟨　⟩ ー、，…‥。｛　｝（　）［　］【　】〽「　」『　』〝　〟〜：！？♪".chars() {
@@ -148,13 +169,13 @@ lazy_static! {
    };
    pub static ref JAPANESE: HashSet<char> = {
       let mut index = HashSet::new();
-      for (c,_) in H2R.iter() {
+      for c in HIRAGANA.iter() {
          index.insert(*c);
       }
-      for (c,_) in K2R.iter() {
+      for c in KATAKANA.iter() {
          index.insert(*c);
       }
-      for (c,_) in JOUYOU_ATEJI_INDEX.iter() {
+      for c in JOUYOU_KANJI.iter() {
          index.insert(*c);
       }
       for c in JAPANESE_PUNCTUATION.iter() {
