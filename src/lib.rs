@@ -2,7 +2,7 @@ use std::collections::{HashMap,HashSet};
 use lazy_static::lazy_static;
 use widestring::U32String;
 
-pub static HIRAGANA_TO_ROMAJI: [(char,&str); 83] = [
+pub static HIRAGANA_TO_ROMAJI_DATA: [(char,&str); 83] = [
    ('あ',"a"),  ('い',"i"),   ('う',"u"),   ('え',"e"),  ('お',"o"),
    ('か',"ka"), ('き',"ki"),  ('く',"ku"),  ('け',"ke"), ('こ',"ko"),
    ('が',"ga"),	('ぎ',"gi"),  ('ぐ',"gu"),  ('げ',"ge"), ('ご',"go"),
@@ -27,23 +27,23 @@ pub static HIRAGANA_TO_ROMAJI: [(char,&str); 83] = [
    ('ぁ',"xa"), ('ぃ',"xi"),  ('ぅ',"xu"),  ('ぇ',"xe"), ('ぉ',"xo"),
 ];
 lazy_static! {
-   pub static ref H2R: HashMap<char,String> = {
+   pub static ref HIRAGANA_TO_ROMAJI: HashMap<char,String> = {
       let mut ktr = HashMap::new();
-      for (c,r) in HIRAGANA_TO_ROMAJI.iter() {
+      for (c,r) in HIRAGANA_TO_ROMAJI_DATA.iter() {
          ktr.insert(*c,r.to_string());
       }
       ktr
    };
    pub static ref HIRAGANA: HashSet<char> = {
       let mut index = HashSet::new();
-      for (c,_) in HIRAGANA_TO_ROMAJI.iter() {
+      for (c,_) in HIRAGANA_TO_ROMAJI_DATA.iter() {
          index.insert(*c);
       }
       index
    };
 }
 
-pub static KATAKANA_TO_ROMAJI: [(char,&str); 85] = [
+pub static KATAKANA_TO_ROMAJI_DATA: [(char,&str); 85] = [
    ('ア',"a"),  ('イ',"i"),   ('ウ',"u"),   ('エ',"e"),	 ('オ',"o"),
    ('カ',"ka"), ('キ',"ki"),  ('ク',"ku"),  ('ケ',"ke"), ('コ',"ko"),
    ('ガ',"ga"), ('ギ',"gi"),  ('グ',"gu"),  ('ゲ',"ge"), ('ゴ',"go"),
@@ -67,23 +67,23 @@ pub static KATAKANA_TO_ROMAJI: [(char,&str); 85] = [
    ('ヵ',"xka"), ('ヶ',"xke")
 ];
 lazy_static! {
-   pub static ref K2R: HashMap<char,String> = {
+   pub static ref KATAKANA_TO_ROMAJI: HashMap<char,String> = {
       let mut ktr = HashMap::new();
-      for (c,r) in KATAKANA_TO_ROMAJI.iter() {
+      for (c,r) in KATAKANA_TO_ROMAJI_DATA.iter() {
          ktr.insert(*c,r.to_string());
       }
       ktr
    };
    pub static ref KATAKANA: HashSet<char> = {
       let mut index = HashSet::new();
-      for (c,_) in KATAKANA_TO_ROMAJI.iter() {
+      for (c,_) in KATAKANA_TO_ROMAJI_DATA.iter() {
          index.insert(*c);
       }
       index
    };
 }
 
-pub static HALFWIDTH_KATAKANA_TO_ROMAJI: [(char,&str); 57] = [
+pub static HALFWIDTH_KATAKANA_TO_ROMAJI_DATA: [(char,&str); 57] = [
    //dakuten and handakuten make two code points, not one char
    ('ｱ',"a"),  ('ｲ',"i"),   ('ｳ',"u"),   ('ｴ',"e"),	 ('ｵ',"o"),
    ('ｶ',"ka"), ('ｷ',"ki"),  ('ｸ',"ku"),  ('ｹ',"ke"), ('ｺ',"ko"),
@@ -102,16 +102,16 @@ pub static HALFWIDTH_KATAKANA_TO_ROMAJI: [(char,&str); 57] = [
    ('ヵ',"xka"), ('ヶ',"xke")
 ];
 lazy_static! {
-   pub static ref HWK2R: HashMap<char,String> = {
+   pub static ref HALFWIDTH_KATAKANA_TO_ROMAJI: HashMap<char,String> = {
       let mut ktr = HashMap::new();
-      for (c,r) in HALFWIDTH_KATAKANA_TO_ROMAJI.iter() {
+      for (c,r) in HALFWIDTH_KATAKANA_TO_ROMAJI_DATA.iter() {
          ktr.insert(*c,r.to_string());
       }
       ktr
    };
    pub static ref HALFWIDTH_KATAKANA: HashSet<char> = {
       let mut index = HashSet::new();
-      for (c,_) in HALFWIDTH_KATAKANA_TO_ROMAJI.iter() {
+      for (c,_) in HALFWIDTH_KATAKANA_TO_ROMAJI_DATA.iter() {
          index.insert(*c);
       }
       index
@@ -393,9 +393,11 @@ lazy_static! {
 pub fn romaji(s: &str) -> String {
    let mut o = String::new();
    for c in s.chars() {
-      if let Some(r) = H2R.get(&c) {
+      if let Some(r) = HIRAGANA_TO_ROMAJI.get(&c) {
          o.push_str(&r);
-      } else if let Some(r) = K2R.get(&c) {
+      } else if let Some(r) = KATAKANA_TO_ROMAJI.get(&c) {
+         o.push_str(&r);
+      } else if let Some(r) = HALFWIDTH_KATAKANA_TO_ROMAJI.get(&c) {
          o.push_str(&r);
       } else {
          o.push(c);
