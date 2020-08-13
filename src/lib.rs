@@ -9,7 +9,7 @@ pub static HIRAGANA_TO_ROMAJI: [(char,&str); 83] = [
    ('さ',"sa"),	('し',"shi"), ('す',"su"),  ('せ',"se"), ('そ',"so"),
    ('ざ',"za"),	('じ',"ji"),  ('ず',"zu"),  ('ぜ',"ze"), ('ぞ',"zo"),
    ('た',"ta"),	('ち',"chi"), ('つ',"tsu"), ('て',"te"), ('と',"to"),
-   ('だ',"da"),	('ぢ',"ji"),  ('づ',"zu"),  ('で',"de"), ('ど',"do"),
+   ('だ',"da"),	('ぢ',"di"),  ('づ',"du"),  ('で',"de"), ('ど',"do"),
    ('な',"na"),	('に',"ni"),  ('ぬ',"nu"),  ('ね',"ne"), ('の',"no"),
    ('は',"ha"),	('ひ',"hi"),  ('ふ',"fu"),  ('へ',"he"), ('ほ',"ho"),
    ('ば',"ba"),	('び',"bi"),  ('ぶ',"bu"),  ('べ',"be"), ('ぼ',"bo"),
@@ -50,7 +50,7 @@ pub static KATAKANA_TO_ROMAJI: [(char,&str); 85] = [
    ('サ',"sa"), ('シ',"shi"), ('ス',"su"),  ('セ',"se"), ('ソ',"so"),
    ('ザ',"za"), ('ジ',"ji"),  ('ズ',"zu"),  ('ゼ',"ze"), ('ゾ',"zo"),
    ('タ',"ta"), ('チ',"chi"), ('ツ',"tsu"), ('テ',"te"), ('ト',"to"),
-   ('ダ',"da"), ('ヂ',"ji"),  ('ヅ',"zu"),  ('デ',"de"), ('ド',"do"),
+   ('ダ',"da"), ('ヂ',"di"),  ('ヅ',"du"),  ('デ',"de"), ('ド',"do"),
    ('ナ',"na"), ('ニ',"ni"),  ('ヌ',"nu"),  ('ネ',"ne"), ('ノ',"no"),
    ('ハ',"ha"), ('ヒ',"hi"),  ('フ',"fu"),  ('ヘ',"he"), ('ホ',"ho"),
    ('バ',"ba"), ('ビ',"bi"),  ('ブ',"bu"),  ('ベ',"be"), ('ボ',"bo"),
@@ -77,6 +77,41 @@ lazy_static! {
    pub static ref KATAKANA: HashSet<char> = {
       let mut index = HashSet::new();
       for (c,_) in KATAKANA_TO_ROMAJI.iter() {
+         index.insert(*c);
+      }
+      index
+   };
+}
+
+pub static HALFWIDTH_KATAKANA_TO_ROMAJI: [(char,&str); 57] = [
+   //dakuten and handakuten make two code points, not one char
+   ('ｱ',"a"),  ('ｲ',"i"),   ('ｳ',"u"),   ('ｴ',"e"),	 ('ｵ',"o"),
+   ('ｶ',"ka"), ('ｷ',"ki"),  ('ｸ',"ku"),  ('ｹ',"ke"), ('ｺ',"ko"),
+   ('ｻ',"sa"), ('ｼ',"shi"), ('ｽ',"su"),  ('ｾ',"se"), ('ｿ',"so"),
+   ('ﾀ',"ta"), ('ﾁ',"chi"), ('ﾂ',"tsu"), ('ﾃ',"te"), ('ﾄ',"to"),
+   ('ﾅ',"na"), ('ﾆ',"ni"),  ('ﾇ',"nu"),  ('ﾈ',"ne"), ('ﾉ',"no"),
+   ('ﾊ',"ha"), ('ﾋ',"hi"),  ('ﾌ',"fu"),  ('ﾍ',"he"), ('ﾎ',"ho"),
+   ('ﾏ',"ma"), ('ﾐ',"mi"),  ('ﾑ',"mu"),  ('ﾒ',"me"), ('ﾓ',"mo"),
+   ('ﾔ',"ya"),		      ('ﾕ',"yu"),		 ('ﾖ',"yo"),
+   ('ﾗ',"ra"), ('ﾘ',"ri"),  ('ﾙ',"ru"),  ('ﾚ',"re"), ('ﾛ',"ro"),
+   ('ﾜ',"wa"),		     ('ｦ',"wo"),
+   ('ﾝ',"n"),
+   ('ｯ',"xtsu"),
+   ('ｬ',"xya"),              ('ｭ',"xyu"),              ('ｮ',"xyo"),
+   ('ｧ',"xa"), ('ｨ',"xi"),  ('ｩ',"xu"),  ('ｪ',"xe"), ('ｫ',"xo"),
+   ('ヵ',"xka"), ('ヶ',"xke")
+];
+lazy_static! {
+   pub static ref HWK2R: HashMap<char,String> = {
+      let mut ktr = HashMap::new();
+      for (c,r) in HALFWIDTH_KATAKANA_TO_ROMAJI.iter() {
+         ktr.insert(*c,r.to_string());
+      }
+      ktr
+   };
+   pub static ref HALFWIDTH_KATAKANA: HashSet<char> = {
+      let mut index = HashSet::new();
+      for (c,_) in HALFWIDTH_KATAKANA_TO_ROMAJI.iter() {
          index.insert(*c);
       }
       index
@@ -173,6 +208,9 @@ lazy_static! {
          index.insert(*c);
       }
       for c in KATAKANA.iter() {
+         index.insert(*c);
+      }
+      for c in HALFWIDTH_KATAKANA.iter() {
          index.insert(*c);
       }
       for c in JOUYOU_KANJI.iter() {
