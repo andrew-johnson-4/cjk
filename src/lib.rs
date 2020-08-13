@@ -139,6 +139,29 @@ lazy_static! {
       }
       index
    };
+   pub static ref JAPANESE_PUNCTUATION: HashSet<char> = {
+      let mut index = HashSet::new();
+      for c in "⟨　⟩ ー、，…‥。｛　｝（　）［　］【　】〽「　」『　』〝　〟〜：！？♪".chars() {
+         index.insert(c);
+      }
+      index
+   };
+   pub static ref JAPANESE: HashSet<char> = {
+      let mut index = HashSet::new();
+      for (c,_) in H2R.iter() {
+         index.insert(*c);
+      }
+      for (c,_) in K2R.iter() {
+         index.insert(*c);
+      }
+      for (c,_) in JOUYOU_ATEJI_INDEX.iter() {
+         index.insert(*c);
+      }
+      for c in JAPANESE_PUNCTUATION.iter() {
+         index.insert(*c);
+      }
+      index
+   };
 }
 
 pub struct UnihanRadical {
@@ -355,8 +378,7 @@ pub fn is_simplified_chinese(s: &str) -> bool {
    s.chars().all(|c| UNIHAN_SIMPLIFIED_CHINESE.contains(&c))
 }
 pub fn is_japanese(s: &str) -> bool {
-   let _ = s;
-   unimplemented!("is_japanese has not been implemented")
+   s.chars().all(|c| JAPANESE.contains(&c) )
 }
 pub fn is_korean(s: &str) -> bool {
    let _ = s;

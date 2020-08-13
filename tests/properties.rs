@@ -20,3 +20,9 @@ fn property3() {
    assert!(!cjk::is_simplified_chinese("広"));
    assert!(!cjk::is_simplified_chinese("廣"));
 }
+
+#[test]
+fn property4() {
+   assert!(cjk::is_japanese("マラソン五輪代表に五万メートル出場にも含ふくみ"));
+   assert!(!cjk::is_japanese("123"));
+}
