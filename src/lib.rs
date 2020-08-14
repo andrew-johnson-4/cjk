@@ -366,6 +366,31 @@ lazy_static! {
       }
       index
    };
+   pub static ref UNIHAN_ANY_VARIANT: HashMap<char,HashSet<char>> = {
+      let mut index: HashMap<char,HashSet<char>> = HashMap::new();
+      for line in include_str!("../unihan_data/Unihan_Variants.txt").split('\n') {
+         if line.len()==0 { continue; }
+         if &line[0..1]=="#" { continue; }
+         let vs = line.split('\t').collect::<Vec<&str>>();
+         let code = vs[0];
+         if let Some(code_char) = decode_unicode_32(code).chars().next() {
+            if !index.contains_key(&code_char) {
+               index.insert(code_char, HashSet::new());
+            }
+            for var in vs[2].split_whitespace() {
+               let cvar = var.split('<').next().unwrap();
+               let cvar = decode_unicode_32(cvar).chars().next().unwrap();
+               if !index.contains_key(&cvar) {
+                  index.insert(cvar, HashSet::new());
+               }
+
+               index.get_mut(&code_char).unwrap().insert(cvar);
+               index.get_mut(&cvar).unwrap().insert(code_char);
+            }
+         }
+      }
+      index
+   };
    pub static ref UNIHAN_SIMPLIFIED_CHINESE: HashSet<char> = {
 /*
 #       kSemanticVariant
@@ -430,6 +455,15 @@ pub fn parts(c: char) -> Vec<char> {
    //any part or radical in character
    let _  = c;
    unimplemented!("parts has not been implemented")
+}
+pub fn variants(c: char) -> Vec<char> {
+   if let Some(cvs) = UNIHAN_ANY_VARIANT.get(&c) {
+      let mut cvs = cvs.iter().map(|c| *c).collect::<Vec<char>>();
+      cvs.sort();
+      cvs
+   } else {
+      Vec::new()
+   }
 }
 
 pub fn is_traditional_chinese(s: &str) -> bool {
