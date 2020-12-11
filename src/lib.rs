@@ -431,10 +431,15 @@ pub fn romaji(s: &str) -> String {
    o
 }
 
+/// <b>stroke_count</b> returns the number of strokes 
+/// typically used to write the given character.
 pub fn stroke_count(c: char) -> u64 {
    let _ = c;
    unimplemented!("stroke_count has not been implemented")
 }
+
+/// <b>radical</b> returns the Kangxi numerical index of
+/// the given character.
 pub fn radical(c: char) -> Option<u64> {
    //dictionary-order radical
    if let Some(ch) = UNIHAN_CHARACTERS.get(&c) {
@@ -443,6 +448,9 @@ pub fn radical(c: char) -> Option<u64> {
       None
    }
 }
+
+/// <b>radicals</b> returns the Kangxi numerical indexes of
+/// all radicals or their variants present in the given character.
 pub fn radicals(c: char) -> Vec<u64> {
    //any radical in character
    if let Some(ch) = UNIHAN_CHARACTERS.get(&c) {
@@ -451,11 +459,17 @@ pub fn radicals(c: char) -> Vec<u64> {
       Vec::new()
    }
 }
+
+/// <b>parts</b> returns all radicals or their variants
+/// present in the given character.
 pub fn parts(c: char) -> Vec<char> {
    //any part or radical in character
    let _  = c;
    unimplemented!("parts has not been implemented")
 }
+
+/// <b>variants</b> returns all equivalent variants
+/// of the given character.
 pub fn variants(c: char) -> Vec<char> {
    if let Some(cvs) = UNIHAN_ANY_VARIANT.get(&c) {
       let mut cvs = cvs.iter().map(|c| *c).collect::<Vec<char>>();
