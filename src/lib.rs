@@ -157,7 +157,7 @@ lazy_static! {
       for jr in JOUYOU_TABLE.iter() {
          for p in jr.pronunciation.iter() {
             if let Some(pr) = p.split('-').next() {
-               let pr = romaji(pr);
+               let pr = to_romaji(pr);
                if !index.contains_key(&pr) {
                   index.insert(pr.clone(), Vec::new());
                }
