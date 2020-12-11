@@ -484,6 +484,12 @@ pub fn is_vietnamese(s: &str) -> bool {
    unimplemented!("is_vietnamese has not been implemented")
 }
 
+/// <b>is_cjk_codepoint</b> returns true if the character falls
+/// within the CJK unicode block. The CJK unicode block does not
+/// contain all japanese, korean, or vietnamese characters.
+///
+/// Despite this shortcoming, this utility is widely used and
+/// we provide it here for applications that expect it.
 pub fn is_cjk_codepoint(c: char) -> bool {
    let cp: u32 = c.into();
    (cp >= 0x4E00 && cp <= 0x9FFF) ||
