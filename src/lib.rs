@@ -415,7 +415,8 @@ lazy_static! {
    };
 }
 
-pub fn romaji(s: &str) -> String {
+/// <b>to_romaji</b> attempts to convert Japanese text to romaji.
+pub fn to_romaji(s: &str) -> String {
    let mut o = String::new();
    for c in s.chars() {
       if let Some(r) = HIRAGANA_TO_ROMAJI.get(&c) {
@@ -429,6 +430,18 @@ pub fn romaji(s: &str) -> String {
       }
    }
    o
+}
+
+/// <b>to_pinyin</b> attempts to convert Chinese text to pinyin.
+pub fn to_pinyin(s: &str) -> String {
+   let _ = s;
+   unimplemented!("to_pinyin has not been implemented")
+}
+
+/// <b>to_hangul</b> attempts to convert mixed Korean text to hangul.
+pub fn to_hangul(s: &str) -> String {
+   let _ = s;
+   unimplemented!("to_hangul has not been implemented")
 }
 
 /// <b>stroke_count</b> returns the number of strokes 
