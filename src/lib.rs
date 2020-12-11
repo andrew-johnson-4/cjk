@@ -500,7 +500,7 @@ pub fn is_vietnamese(s: &str) -> bool {
 
 /// <b>is_cjk_codepoint</b> returns true if the character falls
 /// within the CJK unicode block. The CJK unicode block does not
-/// contain all japanese, korean, or vietnamese characters.
+/// contain all chinese, japanese, korean, or vietnamese characters.
 ///
 /// Despite this shortcoming, this utility is widely used and
 /// we provide it here for applications that expect it.
