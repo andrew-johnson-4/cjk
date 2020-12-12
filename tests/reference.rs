@@ -1,12 +1,12 @@
 
 #[test]
 fn reference1() {
-    assert_eq!(cjk::radical('待'), Some(60));
+    assert_eq!(cjk::get_radical('待'), Some(60));
 }
 
 #[test]
 fn reference2() {
-    assert_eq!(cjk::radicals('待'), vec![60]);
+    assert_eq!(cjk::get_radicals('待'), vec![60]);
 }
 
 /*

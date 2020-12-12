@@ -444,16 +444,16 @@ pub fn to_hangul(s: &str) -> String {
    unimplemented!("to_hangul has not been implemented")
 }
 
-/// <b>stroke_count</b> returns the number of strokes 
+/// <b>get_stroke_count</b> returns the number of strokes 
 /// typically used to write the given character.
-pub fn stroke_count(c: char) -> u64 {
+pub fn get_stroke_count(c: char) -> u64 {
    let _ = c;
    unimplemented!("stroke_count has not been implemented")
 }
 
-/// <b>radical</b> returns the Kangxi numerical index of
+/// <b>get_radical</b> returns the Kangxi numerical index of
 /// the given character.
-pub fn radical(c: char) -> Option<u64> {
+pub fn get_radical(c: char) -> Option<u64> {
    //dictionary-order radical
    if let Some(ch) = UNIHAN_CHARACTERS.get(&c) {
       ch.radicals.iter().filter(|r| r.canonical).map(|r| r.radical).next()
@@ -462,9 +462,9 @@ pub fn radical(c: char) -> Option<u64> {
    }
 }
 
-/// <b>radicals</b> returns the Kangxi numerical indexes of
+/// <b>get_radicals</b> returns the Kangxi numerical indexes of
 /// all radicals or their variants present in the given character.
-pub fn radicals(c: char) -> Vec<u64> {
+pub fn get_radicals(c: char) -> Vec<u64> {
    //any radical in character
    if let Some(ch) = UNIHAN_CHARACTERS.get(&c) {
       ch.radicals.iter().filter(|r| r.canonical).map(|r| r.radical).collect::<Vec<u64>>()
@@ -473,17 +473,17 @@ pub fn radicals(c: char) -> Vec<u64> {
    }
 }
 
-/// <b>parts</b> returns all radicals or their variants
+/// <b>get_parts</b> returns all radicals or their variants
 /// present in the given character.
-pub fn parts(c: char) -> Vec<char> {
+pub fn get_parts(c: char) -> Vec<char> {
    //any part or radical in character
    let _  = c;
    unimplemented!("parts has not been implemented")
 }
 
-/// <b>variants</b> returns all equivalent variants
+/// <b>get_variants</b> returns all equivalent variants
 /// of the given character.
-pub fn variants(c: char) -> Vec<char> {
+pub fn get_variants(c: char) -> Vec<char> {
    if let Some(cvs) = UNIHAN_ANY_VARIANT.get(&c) {
       let mut cvs = cvs.iter().map(|c| *c).collect::<Vec<char>>();
       cvs.sort();
