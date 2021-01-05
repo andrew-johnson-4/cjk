@@ -496,31 +496,31 @@ pub fn get_variants(c: char) -> Vec<char> {
 /// <b>is_traditional_chinese</b> returns true if the string can
 /// almost certainly be read as traditional chinese.
 pub fn is_traditional_chinese(s: &str) -> bool {
-   s.chars().all(|c| is_cjk_codepoint(c))
+   s.chars().all(|c| is_cjkish_codepoint(c))
 }
 
 /// <b>is_simplified_chinese</b> returns true if the string can
 /// almost certainly be read as simplified chinese.
 pub fn is_simplified_chinese(s: &str) -> bool {
-   s.chars().all(|c| is_cjk_codepoint(c))
+   s.chars().all(|c| is_cjkish_codepoint(c))
 }
 
 /// <b>is_japanese</b> returns true if the string can
 /// almost certainly be read as japanese.
 pub fn is_japanese(s: &str) -> bool {
-   s.chars().all(|c| is_cjk_codepoint(c))
+   s.chars().all(|c| is_cjkish_codepoint(c))
 }
 
 /// <b>is_korean</b> returns true if the string can
 /// almost certainly be read as korean.
 pub fn is_korean(s: &str) -> bool {
-   s.chars().all(|c| is_cjk_codepoint(c))
+   s.chars().all(|c| is_cjkish_codepoint(c))
 }
 
 /// <b>is_vietnamese</b> returns true if the string can
 /// almost certainly be read as vietnamese.
 pub fn is_vietnamese(s: &str) -> bool {
-   s.chars().all(|c| is_cjk_codepoint(c))
+   s.chars().all(|c| is_cjkish_codepoint(c))
 }
 
 /// <b>is_cjk_codepoint</b> returns true if the character falls
@@ -539,4 +539,24 @@ pub fn is_cjk_codepoint(c: char) -> bool {
    (cp >= 0x2B820 && cp <= 0x2CEAF) ||
    (cp >= 0xF900 && cp <= 0xFAFF) ||
    (cp >= 0x2F800 && cp <= 0x2FA1F)
+}
+
+/// <b>is_cjk_punctuation_codepoint</b> returns true if the character falls
+/// within the CJK punctuation unicode block. The CJK punctuation unicode block does not
+/// contain all chinese, japanese, korean, or vietnamese characters.
+pub fn is_cjk_punctuation_codepoint(c: char) -> bool {
+   let cp: u32 = c.into();
+   (cp >= 0x0000 && cp <= 0x009F) ||
+   (cp >= 0x3000 && cp <= 0x303F) ||
+   (cp >= 0xFF00 && cp <= 0xFF9F)
+}
+
+/// <b>is_cjkish_codepoint</b> returns true if the character falls
+/// within the CJK or related unicode blocks. The CJK-ish unicode blocks do
+/// contain most chinese, japanese, korean, or vietnamese characters.
+/// However this comes at the price of specificity and contains many potentially
+/// illegible codepoints.
+pub fn is_cjkish_codepoint(c: char) -> bool {
+   is_cjk_codepoint(c) ||
+   is_cjk_punctuation_codepoint(c)
 }

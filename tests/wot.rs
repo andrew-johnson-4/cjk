@@ -9,7 +9,7 @@ fn chinese_wot() {
    if !is_simplified_chinese(&chinese_wot) {
       for c in chinese_wot.chars() {
          if !is_simplified_chinese(&format!("{}",c)) {
-            panic!("'{}' is not simplified chinese", c)
+            panic!("'{}': {} is not simplified chinese", c, c as u32)
          }
       }
    }
