@@ -6,7 +6,13 @@ fn chinese_wot() {
    let mut d = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
    d.push("tests/data/wall_of_text_zh.txt");
    let chinese_wot = std::fs::read_to_string(d).expect("chinese wall of text");
-   assert!(is_simplified_chinese(&chinese_wot));
+   if !is_simplified_chinese(&chinese_wot) {
+      for c in chinese_wot.chars() {
+         if !is_simplified_chinese(&format!("{}",c)) {
+            panic!("'{}' is not simplified chinese", c)
+         }
+      }
+   }
 }
 
 #[test]
