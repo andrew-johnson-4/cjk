@@ -508,7 +508,7 @@ pub fn is_simplified_chinese(s: &str) -> bool {
 /// <b>is_japanese</b> returns true if the string can
 /// almost certainly be read as japanese.
 pub fn is_japanese(s: &str) -> bool {
-   s.chars().all(|c| is_cjkish_codepoint(c))
+   s.chars().all(|c| is_japanese_codepoint(c))
 }
 
 /// <b>is_korean</b> returns true if the string can
@@ -547,6 +547,7 @@ pub fn is_cjk_codepoint(c: char) -> bool {
 pub fn is_cjk_punctuation_codepoint(c: char) -> bool {
    let cp: u32 = c.into();
    (cp >= 0x0000 && cp <= 0x009F) ||
+   (cp >= 0x2000 && cp <= 0x206F) || //general punctuation
    (cp >= 0x3000 && cp <= 0x303F) ||
    (cp >= 0xFF00 && cp <= 0xFF9F)
 }
@@ -559,4 +560,12 @@ pub fn is_cjk_punctuation_codepoint(c: char) -> bool {
 pub fn is_cjkish_codepoint(c: char) -> bool {
    is_cjk_codepoint(c) ||
    is_cjk_punctuation_codepoint(c)
+}
+
+/// <b>is_japanese_codepoint</b> returns true if the character falls
+/// within the CJK or japanese related unicode blocks.
+pub fn is_japanese_codepoint(c: char) -> bool {
+   let cp: u32 = c.into();
+   is_cjkish_codepoint(c) ||
+   (cp >= 0x3040 && cp <= 0x30FF) //hiragana & katakana
 }
