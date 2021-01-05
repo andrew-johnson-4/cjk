@@ -514,7 +514,7 @@ pub fn is_japanese(s: &str) -> bool {
 /// <b>is_korean</b> returns true if the string can
 /// almost certainly be read as korean.
 pub fn is_korean(s: &str) -> bool {
-   s.chars().all(|c| is_cjkish_codepoint(c))
+   s.chars().all(|c| is_korean_codepoint(c))
 }
 
 /// <b>is_vietnamese</b> returns true if the string can
@@ -568,4 +568,12 @@ pub fn is_japanese_codepoint(c: char) -> bool {
    let cp: u32 = c.into();
    is_cjkish_codepoint(c) ||
    (cp >= 0x3040 && cp <= 0x30FF) //hiragana & katakana
+}
+
+/// <b>is_korean_codepoint</b> returns true if the character falls
+/// within the CJK or korean related unicode blocks.
+pub fn is_korean_codepoint(c: char) -> bool {
+   let cp: u32 = c.into();
+   is_cjkish_codepoint(c) ||
+   (cp >= 0xAC00 && cp <= 0xD7AF) //hangul syllables
 }
