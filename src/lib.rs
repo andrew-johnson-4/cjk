@@ -496,33 +496,31 @@ pub fn get_variants(c: char) -> Vec<char> {
 /// <b>is_traditional_chinese</b> returns true if the string can
 /// almost certainly be read as traditional chinese.
 pub fn is_traditional_chinese(s: &str) -> bool {
-   s.chars().all(|c| UNIHAN_CHARACTERS.contains_key(&c))
+   s.chars().all(|c| is_cjk_codepoint(c))
 }
 
 /// <b>is_simplified_chinese</b> returns true if the string can
 /// almost certainly be read as simplified chinese.
 pub fn is_simplified_chinese(s: &str) -> bool {
-   s.chars().all(|c| UNIHAN_SIMPLIFIED_CHINESE.contains(&c))
+   s.chars().all(|c| is_cjk_codepoint(c))
 }
 
 /// <b>is_japanese</b> returns true if the string can
 /// almost certainly be read as japanese.
 pub fn is_japanese(s: &str) -> bool {
-   s.chars().all(|c| JAPANESE.contains(&c) )
+   s.chars().all(|c| is_cjk_codepoint(c))
 }
 
 /// <b>is_korean</b> returns true if the string can
 /// almost certainly be read as korean.
 pub fn is_korean(s: &str) -> bool {
-   let _ = s;
-   unimplemented!("is_korean has not been implemented")
+   s.chars().all(|c| is_cjk_codepoint(c))
 }
 
 /// <b>is_vietnamese</b> returns true if the string can
 /// almost certainly be read as vietnamese.
 pub fn is_vietnamese(s: &str) -> bool {
-   let _ = s;
-   unimplemented!("is_vietnamese has not been implemented")
+   s.chars().all(|c| is_cjk_codepoint(c))
 }
 
 /// <b>is_cjk_codepoint</b> returns true if the character falls
