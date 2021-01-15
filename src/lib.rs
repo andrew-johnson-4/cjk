@@ -530,6 +530,10 @@ pub fn is_vietnamese(s: &str) -> bool {
 /// Despite this shortcoming, this utility is widely used and
 /// we provide it here for applications that expect it.
 pub fn is_cjk_codepoint(c: char) -> bool {
+   unicode_blocks::is_cjk(c)
+   /*
+     use unicode_blocks crate for better legibility
+     compared to the more common numerical check:
    let cp: u32 = c.into();
    (cp >= 0x4E00 && cp <= 0x9FFF) ||
    (cp >= 0x3400 && cp <= 0x4DBF) ||
@@ -539,6 +543,7 @@ pub fn is_cjk_codepoint(c: char) -> bool {
    (cp >= 0x2B820 && cp <= 0x2CEAF) ||
    (cp >= 0xF900 && cp <= 0xFAFF) ||
    (cp >= 0x2F800 && cp <= 0x2FA1F)
+   */
 }
 
 /// <b>is_cjk_punctuation_codepoint</b> returns true if the character falls
@@ -546,7 +551,7 @@ pub fn is_cjk_codepoint(c: char) -> bool {
 /// contain all chinese, japanese, korean, or vietnamese characters.
 pub fn is_cjk_punctuation_codepoint(c: char) -> bool {
    let cp: u32 = c.into();
-   (cp >= 0x0000 && cp <= 0x009F) ||
+   (/*cp >= 0x0000 &&*/ cp <= 0x009F) ||
    (cp >= 0x2000 && cp <= 0x206F) || //general punctuation
    (cp >= 0x3000 && cp <= 0x303F) ||
    (cp >= 0xFF00 && cp <= 0xFF9F)
